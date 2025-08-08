@@ -1,6 +1,14 @@
-@extends('layouts.app')
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Laravel App</title>
+   @vite(['resources/css/app.css', 'resources/js/app.js'])
+</head>
+<body class="antialiased">
 
-@section('content')
+<!-- Hero Section -->
 <div class="relative bg-gradient-to-br from-blue-500 via-indigo-500 to-purple-600 text-white overflow-hidden">
     <!-- Background Pattern -->
     <div class="absolute inset-0 opacity-20">
@@ -16,7 +24,7 @@
 
     <div class="relative z-10 flex flex-col items-center justify-center min-h-[80vh] px-6 text-center">
         <!-- Heading -->
-        <h1 class="text-4xl sm:text-6xl font-bold mb-4 animate-fadeIn">
+        <h1 class="text-4xl sm:text-6xl font-bold mb-4">
             Welcome to <span class="bg-white text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-pink-500">My Laravel App</span>
         </h1>
 
@@ -28,10 +36,12 @@
         <!-- Buttons -->
         <div class="flex flex-wrap gap-4 justify-center">
             <a
+               href="#"
                class="px-6 py-3 rounded-lg bg-yellow-400 text-black font-semibold hover:bg-yellow-300 transition">
                Get Started
             </a>
             <a
+               href="#"
                class="px-6 py-3 rounded-lg border border-white hover:bg-white hover:text-indigo-600 transition">
                Learn More
             </a>
@@ -78,4 +88,6 @@
         </div>
     </div>
 </section>
-@endsection
+
+</body>
+</html>
