@@ -26,6 +26,7 @@
                     position: "top",
                     icon: "success",
                     title: moment().format('MMMM Do YYYY, h:mm:ss a'),
+                    text: "Welcome to the dashboard!",
                     showConfirmButton: false,
                     timer: 3000,
                     timerProgressBar: true,
