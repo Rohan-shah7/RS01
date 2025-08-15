@@ -7,11 +7,7 @@ use Illuminate\Http\Request;
 
 class Postcontroller extends Controller
 {
-    public function index()
-    {
-        return view('posts.index');
 
-    }
     public function create()
     {
         return view('posts.create');
@@ -32,4 +28,13 @@ class Postcontroller extends Controller
 
         return redirect()->route('posts.index')->with('success', 'Post created successfully!');
     }
+
+   public function index()
+{
+    $posts = Post::all(); // Fetch all posts from DB
+
+    return view('posts.index', compact('posts'));
+}
+
+
 }
