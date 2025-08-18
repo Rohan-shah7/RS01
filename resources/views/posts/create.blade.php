@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create Post</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body class="bg-gray-100 min-h-screen flex items-center justify-center">
@@ -12,14 +13,24 @@
     <div class="w-full max-w-md bg-white shadow-lg rounded-xl p-6">
         <h1 class="text-2xl font-bold mb-6 text-gray-800">Create Post</h1>
 
-        {{-- Success Message --}}
+        {{-- Success Toast --}}
         @if(session('success'))
-            <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 mb-4 rounded">
-                {{ session('success') }}
-            </div>
+            <script>
+                document.addEventListener("DOMContentLoaded", () => {
+                    Swal.fire({
+                        toast: true,
+                        position: 'top-end',
+                        icon: 'success',
+                        title: "{{ session('success') }}",
+                        showConfirmButton: false,
+                        timer: 3000,
+                        timerProgressBar: true
+                    });
+                });
+            </script>
         @endif
 
-        {{-- Error Messages --}}
+        {{-- Error Messages (still using Tailwind box) --}}
         @if($errors->any())
             <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 mb-4 rounded">
                 <ul class="list-disc list-inside">
@@ -70,5 +81,6 @@
             </div>
         </form>
     </div>
+
 </body>
 </html>
