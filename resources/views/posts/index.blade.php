@@ -6,8 +6,30 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Posts Table</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
+@if(session('success'))
+            <script>
+                document.addEventListener("DOMContentLoaded", () => {
+                    Swal.fire({
+                        toast: true,
+                        position: 'top-end',
+                        icon: 'success',
+                        title: "{{ session('success') }}",
+                        showConfirmButton: false,
+                        timer: 3000,
+                        timerProgressBar: true
+                    });
+                });
+            </script>
+        @endif
+
+@if(session('error'))
+    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 mb-4 rounded">
+        <strong>Error:</strong> {{ session('error') }}
+    </div>
+@endif
 
 <div class="bg-gray-100 p-8">
     <div class="container mx-auto">

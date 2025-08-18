@@ -25,10 +25,8 @@ class Postcontroller extends Controller
             'title'   => $request->title,
             'content' => $request->content,
         ]);
+        return redirect()->route('posts.index')->with('success', 'Post created successfully!');
 
-        return redirect()
-            ->route('posts.index')
-            ->with('success', 'Post created successfully!');
     }
 
     public function index()
