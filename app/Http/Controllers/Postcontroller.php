@@ -35,4 +35,32 @@ class Postcontroller extends Controller
         return view('posts.index', compact('posts'));
     }
 
+    public function edit($id)
+    {
+        $post = Post::findOrFail($id);
+        return view('posts.edit', compact('post')); // standalone edit page
+    }
+
+    // Update post
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'title' => 'required|max:255',
+            'content' => 'required',
+        ]);
+
+        $post = Post::findOrFail($id);
+        $post->update($request->only('title', 'content'));
+
+        return redirect()->route('posts.index')->with('success', 'Post updated successfully.');
+    }
+
+      public function destroy($id)
+    {
+        $post = Post::findOrFail($id);
+        $post->delete();
+
+        return redirect()->route('posts.index')->with('success', 'Post deleted successfully.');
+    }
+
 }

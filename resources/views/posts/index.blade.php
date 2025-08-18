@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,51 +9,66 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
+
 <body>
-@if(session('success'))
-            <script>
-                document.addEventListener("DOMContentLoaded", () => {
-                    Swal.fire({
-                        toast: true,
-                        position: 'top-end',
-                        icon: 'success',
-                        title: "{{ session('success') }}",
-                        showConfirmButton: false,
-                        timer: 3000,
-                        timerProgressBar: true
-                    });
+    @if (session('success'))
+        <script>
+            document.addEventListener("DOMContentLoaded", () => {
+                Swal.fire({
+                    toast: true,
+                    position: 'top-end',
+                    icon: 'success',
+                    title: "{{ session('success') }}",
+                    showConfirmButton: false,
+                    timer: 3000,
+                    timerProgressBar: true
                 });
-            </script>
-        @endif
+            });
+        </script>
+    @endif
 
-@if(session('error'))
-    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 mb-4 rounded">
-        <strong>Error:</strong> {{ session('error') }}
-    </div>
-@endif
+    @if (session('error'))
+        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 mb-4 rounded">
+            <strong>Error:</strong> {{ session('error') }}
+        </div>
+    @endif
 
-<div class="bg-gray-100 p-8">
-    <div class="container mx-auto">
-        <h1 class="text-3xl font-bold mb-6 text-center text-gray-800">Posts</h1>
-        <div class="overflow-x-auto">
-            <table class="min-w-full bg-white shadow-md rounded-lg overflow-hidden">
-                <thead class="bg-blue-600 text-white">
-                    <tr>
-                        <th class="py-3 px-6 text-left">Title</th>
-                        <th class="py-3 px-6 text-left">Description</th>
-                    </tr>
-                </thead>
-                <td>
-                    @foreach($posts as $post)
-                    <tr class="border-b hover:bg-gray-100 transition duration-300">
-                        <td class="py-3 px-6">{{$post->title}}</td>
-                        <td class="py-3 px-6">{{$post->content}}</td>
-                    </tr>
-                    @endforeach
-                </td>
-            </table>
+    <div class="bg-gray-100 p-8">
+        <div class="container mx-auto">
+            <h1 class="text-3xl font-bold mb-6 text-center text-gray-800">Posts</h1>
+            <div class="overflow-x-auto">
+                <table class="min-w-full bg-white shadow-md rounded-lg overflow-hidden">
+                    <thead class="bg-blue-600 text-white">
+                        <tr>
+                            <th class="py-3 px-6 text-left">Title</th>
+                            <th class="py-3 px-6 text-left">Description</th>
+                            <th class="py-3 px-6 text-left">Operation</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($posts as $post)
+                            <tr class="border-b hover:bg-gray-100 transition duration-300">
+                                <td class="py-3 px-6">{{ $post->title }}</td>
+                                <td class="py-3 px-6">{{ $post->content }}</td>
+                                <td class="py-3 px-6 flex space-x-4">
+                                    <a href="{{ route('posts.edit', $post->id) }}"
+                                        class="text-blue-500 hover:underline">Edit</a>
+
+                                    <form action="{{ route('posts.destroy', $post->id) }}" method="POST"
+                                        onsubmit="return confirm('Are you sure you want to delete this post?');">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="text-red-500 hover:underline">Delete</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
-</div>
+
 </body>
+
 </html>
