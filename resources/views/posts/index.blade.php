@@ -52,13 +52,13 @@
                                 <td class="py-3 px-6">{{ $post->content }}</td>
                                 <td class="py-3 px-6 flex space-x-4">
                                     <a href="{{ route('posts.edit', $post->id) }}"
-                                        class="text-blue-500 hover:underline">Edit</a>
+                                        class="px-4 py-2 bg-blue-500 text-white rounded-lg shadow-md hover:bg-blue-600 focus:ring-2 focus:ring-blue-400 transition">Edit</a>
 
                                     <form action="{{ route('posts.destroy', $post->id) }}" method="POST"
                                         onsubmit="return confirm('Are you sure you want to delete this post?');">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="text-red-500 hover:underline">Delete</button>
+                                        <button type="submit" class="px-4 py-2 bg-red-500 text-white rounded-lg shadow-md hover:bg-red-600 focus:ring-2 focus:ring-red-400 transition">Delete</button>
                                     </form>
                                 </td>
                             </tr>
