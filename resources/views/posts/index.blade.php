@@ -7,6 +7,20 @@
     <title>Posts Table</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
+
+@if(session('success'))
+    <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 mb-4 rounded">
+        <strong>Success:</strong> {{ session('success') }}
+    </div>
+
+@endif
+
+@if(session('error'))
+    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 mb-4 rounded">
+        <strong>Error:</strong> {{ session('error') }}
+    </div>
+@endif
+
 <body class="bg-gray-100 p-8">
     <div class="container mx-auto">
         <h1 class="text-3xl font-bold mb-6 text-center text-gray-800">Posts</h1>

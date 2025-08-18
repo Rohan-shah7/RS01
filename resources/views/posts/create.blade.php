@@ -15,9 +15,10 @@
             <div class="p-5">
                 <h1 class="text-xl font-bold mb-4">Create a Post</h1>
                 <label for="title" class="block mb-2">Title:</label>
-                <input type="text" name="title" placeholder="Title" class="border p-2 w-full mb-4">
+                <input type="text" name="title" required placeholder="Title" class="border p-2 w-full mb-4">
                 <label for="content" class="block mb-2">Content:</label>
-                <textarea name="content" placeholder="Content" class="border p-2 w-full mb-4"></textarea>
+
+                <textarea name="content" required placeholder="Content" class="border p-2 w-full mb-4"></textarea>
                 <button type="submit" class="w-full bg-blue-500 text-white py-2">Create Post</button>
             </div>
         </div>
