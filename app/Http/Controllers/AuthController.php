@@ -21,14 +21,20 @@ class AuthController extends Controller
             'password' => 'required|min:4',
         ]);
 
-        DB::table('peoples')->insert([
+       $userId = DB::table('peoples')->insert([
             'name' => $request->name,
             'email' => $request->email,
-            'password' => $request->password, // ⚠️ plain text
+            'password' => $request->password, // plain text
         ]);
+              // Fetch the inserted user
+    $user = DB::table('peoples')->where('id', $userId)->first();
 
-        return redirect()->route('login.form')->with('success', 'Registered successfully! Please login.');
+    // Store in session
+    Session::put('user', $user);
+
+    return redirect()->route('dashboard');
     }
+
 
     // Show Login Form
     public function loginForm() {

@@ -35,7 +35,11 @@
 
     <div class="bg-gray-100 p-8">
         <div class="container mx-auto">
-            <h1 class="text-3xl font-bold mb-6 text-center text-gray-800">Posts</h1>
+            <h1 class="text-3xl font-bold mb-6 text-center  text-gray-800">Posts</h1>
+            <div class="p-8 text-center ">
+                 <a href="{{ route('posts.create') }}"
+                    class="px-4 py-2 bg-blue-500 text-white rounded-lg shadow-md hover:bg-blue-600 focus:ring-2 focus:ring-blue-400 transition">Create New Post</a>
+            </div>
             <div class="overflow-x-auto">
                 <table class="min-w-full bg-white shadow-md rounded-lg overflow-hidden">
                     <thead class="bg-blue-600 text-white">

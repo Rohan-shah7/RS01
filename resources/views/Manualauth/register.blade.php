@@ -23,6 +23,11 @@
                 <p class="text-sm">{{ session('success') }}</p>
             </div>
         @endif
+        {{-- @if(session('error'))
+            <div class="bg-green-100 text-red-700 p-3 rounded mb-4">
+                <p class="text-sm">{{ session('error') }}</p>
+            </div>
+        @endif --}}
 
         <form method="POST" action="{{ route('register') }}" class="space-y-4">
             @csrf
